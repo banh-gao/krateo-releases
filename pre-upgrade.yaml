@@ -46,15 +46,9 @@ spec:
         - name: NAMESPACE
           value: "{{ .Namespace }}"
         securityContext:
-          runAsUser: null
-          runAsGroup: null
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          seccompProfile:
-            type: RuntimeDefault
-          capabilities:
-            drop:
-              - "ALL"
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
         command:
         - /bin/sh
         - -c
